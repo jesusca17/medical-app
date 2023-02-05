@@ -25,7 +25,7 @@ const Register = ({navigation}) => {
     const [fontLoaded, setFontLoaded] = useState(false);
     const [date, setDate] = useState(new Date());
     const [open, setOpen] = useState(false);
-    const [dobLabel, setDobLabel] = useState('Date of Birth');
+    const [dobLabel, setDobLabel] = useState('Fecha de Nacimiento');
 
     if(!fontLoaded){
         return (
@@ -57,15 +57,11 @@ const Register = ({navigation}) => {
                         color: '#333',
                         marginBottom: 30,
                     }}>
-                    Register
-                    </Text>
-
-                    <Text style={{textAlign: 'center', color: '#666', marginBottom: 30}}>
-                    Or, register with email ...
+                    Registro
                     </Text>
 
                     <InputField
-                    label={'Full Name'}
+                    label={'Nombre Completo'}
                     icon={
                         <Ionicons
                         name="person-outline"
@@ -77,7 +73,7 @@ const Register = ({navigation}) => {
                     />
 
                     <InputField
-                    label={'Email ID'}
+                    label={'Correo Electronico'}
                     icon={
                         <MaterialIcons
                         name="alternate-email"
@@ -90,7 +86,7 @@ const Register = ({navigation}) => {
                     />
 
                     <InputField
-                    label={'Password'}
+                    label={'Contraseña'}
                     icon={
                         <Ionicons
                         name="ios-lock-closed-outline"
@@ -103,7 +99,7 @@ const Register = ({navigation}) => {
                     />
 
                     <InputField
-                    label={'Confirm Password'}
+                    label={'Confirma Contraseña'}
                     icon={
                         <Ionicons
                         name="ios-lock-closed-outline"
@@ -136,14 +132,21 @@ const Register = ({navigation}) => {
                     </TouchableOpacity>
                     </View>
                     {open && (
-                    <RNDateTimePicker                    
+                    <RNDateTimePicker   
+                    locale='es-ES'
+                    dateFormat='day month year'                 
                     value={date}
                     mode='date'
-                    onChange={setDate}
+                    onChange={(e) => {
+                        console.log(new Date(e.nativeEvent.timestamp).toISOString().split('T')[0]);
+                        setDate(new Date(e.nativeEvent.timestamp));
+                        setOpen(false);
+                        setDobLabel((new Date(e.nativeEvent.timestamp)).toISOString().split('T')[0]);
+                    }}
                     />
                     )}
 
-                    <CustomButton label={'Register'} onPress={() => {}} />
+                    <CustomButton label={'Registrar'} onPress={() => {}} />
 
                     <View
                     style={{
@@ -151,9 +154,9 @@ const Register = ({navigation}) => {
                         justifyContent: 'center',
                         marginBottom: 30,
                     }}>
-                    <Text>Already registered?</Text>
+                    <Text>Ya se ha registrado?</Text>
                     <TouchableOpacity onPress={() => navigation.goBack()}>
-                        <Text style={{color: '#AD40AF', fontWeight: '700'}}> Login</Text>
+                        <Text style={{color: '#AD40AF', fontWeight: '700'}}> Inciar Sesion</Text>
                     </TouchableOpacity>
                     </View>
                 </View>

@@ -5,7 +5,7 @@ import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import DatePicker from 'react-native-date-picker';
+import RNDateTimePicker from '@react-native-community/datetimepicker';
 import InputField from './InputField';
 import CustomButton from './CustomButton';
 
@@ -135,21 +135,13 @@ const Register = ({navigation}) => {
                         </Text>
                     </TouchableOpacity>
                     </View>
-
-                    <DatePicker
-                    modal
-                    open={open}
-                    date={date}
-                    mode={'date'}
-                    onConfirm={date => {
-                        setOpen(false);
-                        setDate(date);
-                        setDobLabel(date.toDateString());
-                    }}
-                    onCancel={() => {
-                        setOpen(false);
-                    }}
+                    {open && (
+                    <RNDateTimePicker                    
+                    value={date}
+                    mode='date'
+                    onChange={setDate}
                     />
+                    )}
 
                     <CustomButton label={'Register'} onPress={() => {}} />
 

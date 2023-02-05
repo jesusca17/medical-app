@@ -1,10 +1,11 @@
 import React, { useEffect, useRef } from 'react'
 import { Animated, Dimensions, Image, Text, View } from "react-native";
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 // Logo....
 import Logo from '../assets/chat.png';
-import Home from './Home';
+import LoginScreen from './Login';
 
 const BGColor = "#4D4A95"
 
@@ -140,7 +141,7 @@ export default function SplashScreen() {
                             { translateY: moveTitle.y },
                             { scale: scaleTitle }
                         ]
-                    }}>Chatty</Animated.Text>
+                    }}>Medical-App</Animated.Text>
 
                 </Animated.View>
 
@@ -159,7 +160,7 @@ export default function SplashScreen() {
                 ]
             }}>
 
-                <Home></Home>
+                <LoginScreen></LoginScreen>
 
             </Animated.View>
 

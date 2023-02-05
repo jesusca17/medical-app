@@ -1,2 +1,2 @@
 # Medical App
-<img src="https://github.com/jesusca17/medical-app/blob/master/assets/Screenshots/Login.png" height="60">
+<img src="https://github.com/jesusca17/medical-app/blob/master/assets/Screenshots/Login.png" height="300">
